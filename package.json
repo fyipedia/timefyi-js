@@ -1,0 +1,46 @@
+{
+  "name": "timefyi",
+  "version": "0.1.0",
+  "description": "Pure TypeScript timezone engine — current time lookup, timezone difference, time conversion, hourly comparison, and business hours overlap. Zero dependencies.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "timezone",
+    "time",
+    "utc",
+    "offset",
+    "conversion",
+    "business-hours",
+    "iana",
+    "intl",
+    "dst",
+    "world-clock"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fyipedia/timefyi-js"
+  },
+  "homepage": "https://timefyi.com",
+  "license": "MIT",
+  "author": "FYIPedia",
+  "devDependencies": {
+    "tsup": "^8.0",
+    "typescript": "^5.7",
+    "vitest": "^3.0"
+  }
+}
