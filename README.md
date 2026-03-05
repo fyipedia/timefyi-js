@@ -9,6 +9,10 @@ Pure TypeScript timezone engine for developers. Look up [current time](https://t
 
 > **Try the interactive tools at [timefyi.com](https://timefyi.com/)** -- world clock, timezone converter, and business hours overlap finder.
 
+<p align="center">
+  <img src="demo.gif" alt="timefyi demo — timezone conversion and business hours overlap" width="800">
+</p>
+
 ## Install
 
 ```bash
