@@ -1,6 +1,6 @@
 {
   "name": "timefyi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pure TypeScript timezone engine — current time lookup, timezone difference, time conversion, hourly comparison, and business hours overlap. Zero dependencies.",
   "type": "module",
   "main": "dist/index.js",
