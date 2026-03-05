@@ -1,20 +1,32 @@
-# timefyi — Demo
 Output demo.gif
-
 Set FontSize 14
 Set Width 920
-Set Height 620
+Set Height 580
 Set Shell "zsh"
 Set Theme "Catppuccin Mocha"
-Set TypingSpeed 35ms
+Set TypingSpeed 30ms
 Set Padding 20
 
-Type "cat demo.mjs"
+Type "node"
+Enter
+Sleep 1s
+
+Type "const { getCurrentTime, getTimeDifference, getBusinessHoursOverlap } = await import('timefyi')"
+Enter
+Sleep 1.5s
+
+Type "getCurrentTime('Asia/Seoul')"
+Enter
+Sleep 2s
+
+Type "getTimeDifference('Asia/Seoul', 'America/New_York')"
 Enter
 Sleep 2.5s
 
-Type "node demo.mjs"
+Type "getBusinessHoursOverlap(['America/New_York', 'Europe/London'])"
 Enter
-Sleep 3s
+Sleep 2.5s
 
-Sleep 2s
+Type ".exit"
+Enter
+Sleep 1s
