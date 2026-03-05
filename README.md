@@ -17,9 +17,10 @@ Pure TypeScript timezone engine for developers. Look up [current time](https://t
 
 - [Install](#install)
 - [Quick Start](#quick-start)
-- [How Timezone Conversion Works](#how-timezone-conversion-works)
-- [Hourly Comparison Table](#hourly-comparison-table)
-- [Business Hours Overlap](#business-hours-overlap)
+- [What You Can Do](#what-you-can-do)
+  - [How Timezone Conversion Works](#how-timezone-conversion-works)
+  - [Hourly Comparison Table](#hourly-comparison-table)
+  - [Business Hours Overlap](#business-hours-overlap)
 - [API Reference](#api-reference)
 - [TypeScript Types](#typescript-types)
 - [Features](#features)
@@ -63,7 +64,9 @@ console.log(formatUtcOffset(-300));  // "-05:00"
 console.log(formatUtcOffset(330));   // "+05:30"
 ```
 
-## How Timezone Conversion Works
+## What You Can Do
+
+### How Timezone Conversion Works
 
 This engine uses the `Intl.DateTimeFormat` API built into JavaScript runtimes (V8, SpiderMonkey, JSC). No timezone database is bundled -- it uses the ICU data already present in your runtime.
 
@@ -74,7 +77,20 @@ This approach has several advantages:
 - **DST-aware**: Daylight saving time transitions are handled automatically by the runtime. The engine detects DST status by comparing January and July offsets.
 - **Half-hour offsets**: Zones like `Asia/Kolkata` (+05:30) and `Asia/Kathmandu` (+05:45) are handled natively.
 
-## Hourly Comparison Table
+The world is divided into roughly **38 time zones** (including half-hour and 45-minute offsets). Some notable examples:
+
+| Timezone | UTC Offset | Abbreviation | Notable Feature |
+|----------|-----------|-------------|-----------------|
+| `America/New_York` | -05:00 / -04:00 | EST / EDT | US Eastern, DST observed |
+| `Europe/London` | +00:00 / +01:00 | GMT / BST | Prime Meridian, DST observed |
+| `Asia/Seoul` | +09:00 | KST | No DST since 1988 |
+| `Asia/Kolkata` | +05:30 | IST | Half-hour offset, 1.4B people |
+| `Asia/Kathmandu` | +05:45 | NPT | Only 45-minute offset zone |
+| `Pacific/Chatham` | +12:45 / +13:45 | CHAST / CHADT | Furthest ahead, 45-min offset |
+
+Learn more: [World Clock](https://timefyi.com/) · [IANA Time Zone Database](https://www.iana.org/time-zones) · [Time Zone Converter](https://timefyi.com/tools/converter/)
+
+### Hourly Comparison Table
 
 ```typescript
 import { getHourlyComparison } from "timefyi";
@@ -86,7 +102,11 @@ console.log(rows[9]);   // { hour1: "09:00", hour2: "23:00" }
 console.log(rows.length); // 24
 ```
 
-## Business Hours Overlap
+Learn more: [Time Zone Comparison](https://timefyi.com/) · [REST API Docs](https://timefyi.com/developers/)
+
+### Business Hours Overlap
+
+Finding meeting times across multiple time zones is one of the most common scheduling challenges for distributed teams. This function calculates the overlapping window where all specified time zones fall within business hours (default 09:00-17:00).
 
 ```typescript
 import { getBusinessHoursOverlap } from "timefyi";
@@ -108,6 +128,8 @@ const threeWay = getBusinessHoursOverlap(
 );
 console.log(threeWay.hasOverlap);   // false (no 3-way overlap)
 ```
+
+Learn more: [Business Hours Calculator](https://timefyi.com/) · [OpenAPI Spec](https://timefyi.com/api/openapi.json)
 
 ## API Reference
 
